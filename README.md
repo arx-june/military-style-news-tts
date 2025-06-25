@@ -20,7 +20,7 @@
 |--------------|------------------------------------------------------------------------------|
 | Frontend     | HTML, CSS, JS (vanilla)                                                    |
 | Backend      | Python (Flask)                                                              |
-| OCR + LLM    | Gemini 1.5 Flash                                                            |
+| OCR + LLM    | Gemini 2.5 Flash                                                            |
 | TTS          | Amazon Polly                                                                |
 | Audio Mixing | `ffmpeg`                                                                    |
 | Secrets Mgmt | `dotenv`                                                                    |
