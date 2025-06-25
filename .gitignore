@@ -1,0 +1,12 @@
+__pycache__/
+uploads/
+*.pyc
+*.pyo
+*.pyd
+.env
+*.mp3
+*.wav
+*.zip
+*.tar.gz
+.DS_Store
+*.log

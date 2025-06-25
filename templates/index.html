@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WarCast AI</title>
+  
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='warcast.png') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <noscript>
+    <p class="error-message">
+      This application requires JavaScript to run properly. Please enable JavaScript in your browser.
+    </p>
+  </noscript>
+
+  <div class="container">
+    <!-- Upload Section -->
+    <section id="upload-container" role="region" aria-labelledby="upload-heading">
+      <h1 id="upload-heading">
+        <img src="{{ url_for('static', filename='warcast.png') }}" alt="WarCast AI Logo" class="logo-img" />
+        WarCast AI
+      </h1>
+      <p class="subtitle">
+        Transform news articles into military-style audio briefings
+      </p>
+      <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload News Article Image">
+        <div class="upload-icon" aria-hidden="true">📄</div>
+        <h3>Upload News Article Image</h3>
+        <p>Click or drag and drop your image here</p>
+        <input type="file" id="file-input" class="file-input" accept="image/*" aria-label="Select image file" />
+      </div>
+      <div id="error-container" aria-live="polite"></div>
+    </section>
+
+    <!-- Processing Section -->
+    <section id="processing-container" role="region" aria-labelledby="processing-heading">
+      <h2 id="processing-heading">Processing Image</h2>
+      <div class="status-message" id="processing-status">
+        Enhancing image quality...
+      </div>
+      <div id="frequency-visualizer" aria-hidden="true">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      </div>
+      <img id="image-preview" class="image-preview" alt="Preview of uploaded image" />
+    </section>
+
+    <!-- Voice Selection Section -->
+    <section id="voice-selection-container" role="region" aria-labelledby="voice-selection-heading">
+      <h2 id="voice-selection-heading">Select Voice</h2>
+      <p>Choose a voice for your military briefing</p>
+      <select id="voice-select" aria-label="Voice selection">
+        <option value="Matthew">Matthew (Male, Authoritative)</option>
+        <option value="Joanna">Joanna (Female, Professional)</option>
+        <option value="Gregory">Gregory (Male, Commanding)</option>
+        <option value="Ruth">Ruth (Female, Assertive)</option>
+        <option value="Stephen">Stephen (Male, Serious)</option>
+        <option value="Kevin">Kevin (Male, Enthusiastic)</option>
+      </select>
+      <div class="checkbox-container">
+        <input type="checkbox" id="bg-music-checkbox" checked />
+        <label for="bg-music-checkbox">Include Background Music</label>
+      </div>
+      <!-- No form around this button -->
+      <button id="generate-audio-btn" class="btn" type="button">Generate Audio</button>
+    </section>
+
+    <!-- Audio Player Section -->
+    <section id="audio-player-container" role="region" aria-labelledby="audio-player-heading">
+      <h2 id="audio-player-heading">Your Military Briefing</h2>
+      <div class="status-message" id="audio-status">
+        Audio generated successfully!
+      </div>
+      <div class="audio-player">
+        <audio id="audio-player" controls></audio>
+      </div>
+      <div class="audio-controls">
+        <button id="play-btn" class="audio-btn" type="button" aria-label="Play Audio">▶</button>
+        <button id="pause-btn" class="audio-btn" type="button" aria-label="Pause Audio">⏸</button>
+        <button id="replay-btn" class="audio-btn" type="button" aria-label="Replay Audio">↻</button>
+      </div>
+      <div id="extracted-text-container">
+        <h3>Extracted Text:</h3>
+        <p id="extracted-text"></p>
+      </div>
+      <button id="home-btn" class="btn btn-home" type="button">Return to Home</button>
+    </section>
+
+    <!-- Background Music Management Section -->
+    <section id="background-music-container" role="region" aria-labelledby="bg-music-heading">
+      <h2 id="bg-music-heading">Manage Background Music</h2>
+      <form id="bg-music-form" onsubmit="return false;">
+        <label for="bg-music-file">Upload a background music file (.mp3):</label>
+        <input type="file" id="bg-music-file" accept="audio/mp3" aria-label="Select background music file" />
+        <button type="submit" class="btn">Upload Music</button>
+      </form>
+      <button id="list-bg-music-btn" class="btn" type="button">List Available Background Music</button>
+      <div id="bg-music-list" aria-live="polite"></div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 WarCast AI - Military-style news briefings</p>
+  </footer>
+
+  <!-- Load AFTER everything else -->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
